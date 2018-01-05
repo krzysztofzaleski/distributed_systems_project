@@ -52,7 +52,6 @@ int main (int argc, char*argv[]) {
     return 0;
 }
 
-
 void err_sys(const char *b) {
      perror(b);
      exit(1);
