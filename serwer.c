@@ -52,7 +52,6 @@ int main (int argc, char*argv[]) {
     if (bind (dg,sadres,sadres.rozmiar()) < 0)
         err_sys("nie moge zwiazac adresu lokalnego");
 
-
     listen(dg,5);
 
     while(1) {
@@ -62,15 +61,6 @@ int main (int argc, char*argv[]) {
 
         int fd[2];
         pipe(fd);
-
-        //to pozniej rzucic do klienta
-//        printf("podaj pierwszy argument:");
-//        scanf("%s", &arg1);
-//        printf("podaj drugi argument:");
-//        scanf("%s", &arg2);
-//        sprintf(execStr1, "%d", arg1);
-//        sprintf(execStr2, "%d", arg2);
-
 
         // PROCES POTOMNY
         if (fork()==0) {
@@ -84,7 +74,6 @@ int main (int argc, char*argv[]) {
         		if ( odbiera(ddg,buf,100)==0) break;
 
                 if(i==1){
-//                    strcpy(nazwa_programu, buf);
                     prog_nr = atoi(buf);
         		    wysyla(ddg, "Podaj 1 liczbe\t", 100);
         		};
@@ -95,11 +84,8 @@ int main (int argc, char*argv[]) {
         		if(i==3) {
                     arg2 = atof(buf);
                 };
-
-//        		puts(buf);
         	};
 
-//            printf("prog_nr: %d", prog_nr);
             sprintf(execStr1, "%f", arg1);
             sprintf(execStr2, "%f", arg2);
 
