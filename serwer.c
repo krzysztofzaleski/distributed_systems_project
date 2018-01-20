@@ -28,7 +28,6 @@ int main (int argc, char*argv[]) {
     char nazwa_programu[10];
     char execStr1[20];
     char execStr2[20];
-	int wybor;
     int prog_nr;
 
     Internet_Adres sadres,cadres;
@@ -57,25 +56,20 @@ int main (int argc, char*argv[]) {
 
             fflush(stdout);
             //pobranie od uzytk. ktory program
-        	wysyla(ddg,"Wybierz jak¹ operacjê chcesz wykonaæ?\n 1. lista folderow, 2. przywitanie\n:",100);
-			scanf("%d", &wybor);
-        	int i;
-        	for (int i = 1; i < 4; i++) {
-			if (odbiera(ddg, buf, 100) == 0) break;
-			switch (wybor) {
-				case '1':
-					prog_nr = atoi(buf);
-					wysyla(ddg, "ma byc pustee\t", 100);
-					break;
-				case '2':
-					wysyla(ddg, "ma byc witam\t", 100);
-					arg1 = atof(buf);
-					break;
-			};
+        	wysyla(ddg,"Czesc",100);
+
+        	int i = 1;
+        	for (int i = 1; i < 3; i++) {
+        		if ( odbiera(ddg,buf,100)==0) break;
+                prog_nr = atoi(buf);
+        		wysyla(ddg, "Podaj 1 liczbe\t", 100);
+        		wysyla(ddg, "Podaj 2 liczbe\t", 100);
+                arg1 = atof(buf);
+                      		
         	};
 
-           // sprintf(execStr1, "%f", arg1);
-            //sprintf(execStr2, "%f", arg2);
+            sprintf(execStr1, "%f", arg1);
+            sprintf(execStr2, "%f", arg2);
 
             close(fd[0]);
             dup2(fd[1],1);
@@ -85,10 +79,11 @@ int main (int argc, char*argv[]) {
 //                printf("proces potomny wykonuje program <LISTA>:\n");
                 execlp("./lista", execStr1, execStr2, NULL);
             } else if(prog_nr == 2) {
-//                printf("proces potomny wykonuje program <WITAM>:\n");
+//                printf("proces potomny wykonuje program <witam>:\n");
                 execlp("./witam", execStr1, execStr2, NULL);
+
             } else {
-                wysyla(ddg, "Zle argumenty! Na dzisiaj wystarczy...", 100);
+                wysyla(ddg, "Zle argumenty! Do zobaczenia...", 100);
             }
 
             printf("Koniec procesu potomnego\n");
@@ -101,7 +96,7 @@ int main (int argc, char*argv[]) {
             int s;
             wait(&s); // czeka na zakonczenie procesu potomnego
             // sprawdza status zakonczenia potomka
-            if ( s == 0 ) printf("Koniec procesu potomnego, sukces!\n"); //jeœli zakoñczenie nie wykona siê poprawnie/wystapi b³¹d w procesie potomnym wynik jest <>0 wiec jest blad
+            if ( s == 0 ) printf("Koniec procesu potomnego, sukces!\n");
             else printf("Blad procesu potomnego! Numer bledu: %d\n",s);
 
             char wynik[100];
