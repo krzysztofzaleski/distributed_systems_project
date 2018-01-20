@@ -84,7 +84,7 @@ int main (int argc, char*argv[]) {
                 execlp("./lista", execStr1, execStr2, NULL);
             } else if(prog_nr == 2) {
 //                printf("proces potomny wykonuje program <WITAM>:\n");
-                execlp("./witam", NULL, NULL, NULL);
+                execlp("./witam", NULL);
             } else {
                 wysyla(ddg, "Zle argumenty! Na dzisiaj wystarczy...", 100);
             }
