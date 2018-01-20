@@ -64,11 +64,11 @@ int main (int argc, char*argv[]) {
 
                 if(i==1){
                     prog_nr = atoi(buf);
-        		    wysyla(ddg, "", 100);
+        		    wysyla(ddg, "Podaj 1 liczbe\t", 100);
         		};
         		if(i==2) {
-        		    wysyla(ddg, "", 100);
-                   // arg1 = atof(buf);
+        		    wysyla(ddg, "Podaj 2 liczbe\t", 100);
+                    arg1 = atof(buf);
                 };        		
         	};
 
@@ -84,7 +84,7 @@ int main (int argc, char*argv[]) {
                 execlp("./lista", execStr1, execStr2, NULL);
             } else if(prog_nr == 2) {
 //                printf("proces potomny wykonuje program <WITAM>:\n");
-                execlp("./witam", NULL);
+                execlp("./witam", execStr1, execStr2, NULL);
             } else {
                 wysyla(ddg, "Zle argumenty! Na dzisiaj wystarczy...", 100);
             }
