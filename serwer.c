@@ -28,6 +28,7 @@ int main (int argc, char*argv[]) {
     char nazwa_programu[10];
     char execStr1[20];
     char execStr2[20];
+	int wybor;
     int prog_nr;
 
     Internet_Adres sadres,cadres;
@@ -60,16 +61,17 @@ int main (int argc, char*argv[]) {
 
         	int i;
         	//for (int i = 1; i < 4; i++) {
-        		if ( odbiera(ddg,buf,100)==0) break;
-
-                if(i==1){
-                    prog_nr = atoi(buf);
-        		    wysyla(ddg, "ma byc pustee\t", 100);
-        		};
-        		if(i==2) {
-        		    wysyla(ddg, "ma byc witam\t", 100);
-                    arg1 = atof(buf);
-                };        		
+			if (odbiera(ddg, buf, 100) == 0) break;
+			switch (wybor) {
+				case '1':
+					prog_nr = atoi(buf);
+					wysyla(ddg, "ma byc pustee\t", 100);
+					break;
+				case '2':
+					wysyla(ddg, "ma byc witam\t", 100);
+					arg1 = atof(buf);
+					break;
+			};
         	//};
 
            // sprintf(execStr1, "%f", arg1);
