@@ -58,7 +58,7 @@ int main (int argc, char*argv[]) {
             //pobranie od uzytk. ktory program
         	wysyla(ddg,"Wybierz jak¹ operacjê chcesz wykonaæ?\n 1. lista folderow, 2. przywitanie\n:",100);
 
-        	int i = 1;
+        	int i;
         	//for (int i = 1; i < 4; i++) {
         		if ( odbiera(ddg,buf,100)==0) break;
 
