@@ -60,7 +60,7 @@ int main (int argc, char*argv[]) {
         	wysyla(ddg,"Wybierz jak¹ operacjê chcesz wykonaæ?\n 1. lista folderow, 2. przywitanie\n:",100);
 			scanf("%d", &wybor);
         	int i;
-        	//for (int i = 1; i < 4; i++) {
+        	for (int i = 1; i < 4; i++) {
 			if (odbiera(ddg, buf, 100) == 0) break;
 			switch (wybor) {
 				case '1':
@@ -72,7 +72,7 @@ int main (int argc, char*argv[]) {
 					arg1 = atof(buf);
 					break;
 			};
-        	//};
+        	};
 
            // sprintf(execStr1, "%f", arg1);
             //sprintf(execStr2, "%f", arg2);
