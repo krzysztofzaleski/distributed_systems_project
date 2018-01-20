@@ -68,12 +68,12 @@ int main (int argc, char*argv[]) {
         		};
         		if(i==2) {
         		    wysyla(ddg, "", 100);
-                    arg1 = atof(buf);
+                   // arg1 = atof(buf);
                 };        		
         	};
 
-            sprintf(execStr1, "%f", arg1);
-            sprintf(execStr2, "%f", arg2);
+           // sprintf(execStr1, "%f", arg1);
+            //sprintf(execStr2, "%f", arg2);
 
             close(fd[0]);
             dup2(fd[1],1);
@@ -84,7 +84,7 @@ int main (int argc, char*argv[]) {
                 execlp("./lista", execStr1, execStr2, NULL);
             } else if(prog_nr == 2) {
 //                printf("proces potomny wykonuje program <WITAM>:\n");
-                execlp("./witam", execStr1, execStr2, NULL);
+                execlp("./witam", NULL, NULL, NULL);
             } else {
                 wysyla(ddg, "Zle argumenty! Na dzisiaj wystarczy...", 100);
             }
