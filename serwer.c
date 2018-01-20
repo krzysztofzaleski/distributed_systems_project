@@ -64,10 +64,10 @@ int main (int argc, char*argv[]) {
 
                 if(i==1){
                     prog_nr = atoi(buf);
-        		    wysyla(ddg, "Podaj 1 liczbe\t", 100);
+        		   // wysyla(ddg, "Podaj 1 liczbe\t", 100);
         		};
         		if(i==2) {
-        		    wysyla(ddg, "Podaj 2 liczbe\t", 100);
+        		   // wysyla(ddg, "Podaj 2 liczbe\t", 100);
                     arg1 = atof(buf);
                 };        		
         	};
