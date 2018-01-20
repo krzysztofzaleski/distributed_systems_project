@@ -59,18 +59,18 @@ int main (int argc, char*argv[]) {
         	wysyla(ddg,"Wybierz jak¹ operacjê chcesz wykonaæ?\n 1. lista folderow, 2. przywitanie\n:",100);
 
         	int i = 1;
-        	for (int i = 1; i < 4; i++) {
+        	//for (int i = 1; i < 4; i++) {
         		if ( odbiera(ddg,buf,100)==0) break;
 
                 if(i==1){
                     prog_nr = atoi(buf);
-        		   // wysyla(ddg, "Podaj 1 liczbe\t", 100);
+        		    wysyla(ddg, "ma byc pustee\t", 100);
         		};
         		if(i==2) {
-        		   // wysyla(ddg, "Podaj 2 liczbe\t", 100);
+        		    wysyla(ddg, "ma byc witam\t", 100);
                     arg1 = atof(buf);
                 };        		
-        	};
+        	//};
 
            // sprintf(execStr1, "%f", arg1);
             //sprintf(execStr2, "%f", arg2);
