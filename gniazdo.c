@@ -8,9 +8,6 @@ void Internet_Adres::konfiguracja(int port,const char *s) {
      
      host=NULL;
      if (s != NULL) {
-//	  in_addr adr;
-//	  adr.s_addr=inet_addr(s);
-//          host = gethostbyaddr(&adr,sizeof(adr),AF_INET);  //adres stacji
           if (host == NULL) host = gethostbyname(s); 
      }
   
