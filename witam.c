@@ -3,11 +3,9 @@
 #include <cstdlib>
 
 int main () {
-   // float x,y;
-    //x = atof(argv[0]); y = atof(argv[1]);
-    //if (y==0)
-	printf("Hello World!!!!");
-    //else printf("Wynik dzielenia: %.2f\n",(float)x/y);
+  
+	printf("Witaj, tutaj Twoj program uruchomiony za pomoca twojego serwera!!!!");
+   
     return 0;
-	//int argc, char*argv[]
+	
 }

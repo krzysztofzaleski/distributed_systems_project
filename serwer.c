@@ -18,18 +18,6 @@
 
 void err_sys(const char*);
 
-int checker(char input[], char check[]) {
-	int i, result = 1;
-	for (i = 0; input[i] != '\0' || check[i] != '\0'; i++) {
-		if (input[i] != check[i]) {
-			result = 0;
-			break;
-		}
-	}
-	return result;
-}
-
-
 int main(int argc, char*argv[]) {
 	int dg, ddg; //deskryptor
 	int dls, dlc, dl;
@@ -44,19 +32,19 @@ int main(int argc, char*argv[]) {
 	Internet_Adres sadres, cadres;
 
 	// tworzy gniazdo
-	if ((dg = socket(PF_INET, SOCK_STREAM, 0)) < 0)
-		err_sys("nie moge utworzyc gniazda");
+	if ((dg = socket(PF_INET, SOCK_STREAM, 0)) < 0)				//dekrypto=funkcja tworz¹ca gniazdo		
+		err_sys("nie moge utworzyc gniazda");					//jesli deskyptor z³apie b³¹d wtedy nie bêdzie równy 0 i zwroci b³¹d
 
 	sadres.konfiguracja(TSPORT, 0);
 
-	if (bind(dg, sadres, sadres.rozmiar()) < 0)
-		err_sys("nie moge zwiazac adresu lokalnego");
+	if (bind(dg, sadres, sadres.rozmiar()) < 0)					//wi¹zanie adresu z gniazdem
+		err_sys("nie moge zwiazac adresu lokalnego");			//jeœli coœ pójdzie nit tak, bindowanie zwraca <>0 i my obs³ugujemy ten b³¹d
 
-	listen(dg, 5);
+	listen(dg, 5);												//funkcja okreœlaj¹ca liczbê zadañ po³¹czenia
 
 	while (1) {
 		printf("Czekam na polaczenie...\t?\n");
-		ddg = accept(dg, cadres, &cadres.rozmiar());
+		ddg = accept(dg, cadres, &cadres.rozmiar());			//funkcja wywolywana po stronie servera do przyjmowania zadania poloczenia ze strony klienta dg-deskryptor gniazda zwracany przez socket
 		printf("Polaczenie nawiazane!\tok\n");
 
 		int fd[2];
@@ -67,50 +55,11 @@ int main(int argc, char*argv[]) {
 
 			fflush(stdout);
 			//pobranie od uzytk. ktory program
-			//wysyla(ddg, "Nazwa programu", 100);
-			odbiera(ddg, buf, 100);
-			puts(buf);
-			int i = 1;
-			
-			prog_nr = atoi(buf);
-			wysyla(ddg, "", 100);
-				
-				
-					//wysyla(ddg, "Podaj 2 liczbe\t", 100);
-					//arg1 = atof(buf);
-				
-				
-					//arg2 = atof(buf);
-				
-			};
-
-			sprintf(execStr1, "%f", arg1);
-			sprintf(execStr2, "%f", arg2);
-
+			odbiera(ddg, buf, 100);								//odbiera dane
+			sprintf(execStr1, "%s", buf);						//pasruje na string bo tylko taki obsluguje execpl
 			close(fd[0]);
 			dup2(fd[1], 1);
-
-
-			//if (prog_nr == 1) {
-				//                printf("proces potomny wykonuje program <ILORAZ>:\n");
-				execlp("./prog_nr", execStr1, execStr2, NULL);
-			//}
-			//else if (prog_nr == 2) {
-				//                printf("proces potomny wykonuje program <ILOCZYN>:\n");
-			//	execlp("./iloczyn", execStr1, execStr2, NULL);
-			//}
-			//else if (prog_nr == 3) {
-				//                printf("proces potomny wykonuje program <SUMA>:\n");
-			//	execlp("./suma", execStr1, execStr2, NULL);
-			//}
-			//else if (prog_nr == 4) {
-				//                printf("proces potomny wykonuje program <ROZNICA>:\n");
-			//	execlp("./roznica", execStr1, execStr2, NULL);
-		//	}
-			//else {
-			//	wysyla(ddg, "Podales zle argumenty! Konczymy wspolprace...", 100);
-			//}
-
+			execlp(execStr1,NULL);								//uruchamia program
 			printf("Koniec procesu potomnego\n");
 			close(ddg);
 			exit(0);
@@ -131,7 +80,6 @@ int main(int argc, char*argv[]) {
 			wysyla(ddg, wynik, 100);
 		}
 
-	}
 	return 0;
 }
 

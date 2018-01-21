@@ -18,16 +18,13 @@ void err_sys(const char *);
 int main (int argc, char*argv[]) {
     int dg; //deskryptor
     Internet_Adres sadres;       //adres serwera
-    char buf[101],*host,prog,arg1,arg2;   //buf-tablica przesy³ana klinet ->serwer 
+	char buf[101], *host, *prog;   //buf-tablica przesy³ana klinet ->serwer 
 
     // pobiera adres serwera
     if (argc<2) err_sys("brak nazwy serwera");
     host = argv[1];  //nazwa stacji
     if (host==NULL) err_sys("adres:");
 	prog = argv[2]; //nazwa programu
-
-	arg1 = argv[3]; //nazwa programu
-	arg2 = argv[4]; //nazwa programu
     // tworzy gniazdo
     if ((dg=socket (PF_INET,SOCK_STREAM,0)) < 0)
         err_sys("nie moge utworzyc gniazda");
@@ -38,19 +35,11 @@ int main (int argc, char*argv[]) {
     if (connect (dg, sadres, sadres.rozmiar()) < 0)
         err_sys("nie moge poloczyc sie z serverem");
 
-	strcpy(buf, prog);
-    wysyla(dg,buf,100);
-    puts(buf);
+	strcpy(buf, prog);									//kopiuje z bufora do zmiennej
+    wysyla(dg,buf,100);									//wysy³¹ deskryptor i bufor
     fflush(stdout);
-
-    int i=0;
-    while (fgets(buf,100,stdin) != NULL && strcmp(buf,".\n") && i < 3) {
-        wysyla(dg,buf,100);
-        odbiera(dg,buf,100);
-        puts(buf);
-        i++;
-    }
-
+    odbiera(dg,buf,100);								//odbiera od serwera deskryptor i bufor
+    puts(buf);											//wypisuje bufor
     close (dg);
     return 0;
 }
