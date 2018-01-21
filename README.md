@@ -16,14 +16,13 @@
 ```
 g++ serwer.c gniazdo.c -o serwer
 g++ klient.c gniazdo.c -o klient
-g++ iloraz.c -o iloraz
-g++ iloczyn.c -o iloczyn
-g++ suma.c -o suma
-g++ roznica.c -o roznica
+g++ witam.c -o witam
+g++ lista.c -o lista
+
 ```
 
 **Run:**
 ```
 ./serwer
-./klient localhost
+./klient localhost ./<program name>
 ```
