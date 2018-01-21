@@ -59,7 +59,7 @@ int main(int argc, char*argv[]) {
 			sprintf(execStr1, "%s", buf);						//pasruje na string bo tylko taki obsluguje execpl
 			close(fd[0]);
 			dup2(fd[1], 1);
-			execlp(execStr1,NULL);								//uruchamia program
+			execlp(execStr1, NULL);								//uruchamia program
 			printf("Koniec procesu potomnego\n");
 			close(ddg);
 			exit(0);
@@ -79,7 +79,7 @@ int main(int argc, char*argv[]) {
 			printf("Proces macierzysty: %s", wynik);
 			wysyla(ddg, wynik, 100);
 		}
-
+	}
 	return 0;
 }
 
