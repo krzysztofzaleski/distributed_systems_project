@@ -4,7 +4,6 @@
 #include <dirent.h> 
 
 int main (int argc, char*argv[]) {
-	int main(void) {
 		DIR *d;
 		struct dirent *dir;
 		d = opendir(".");
@@ -15,5 +14,5 @@ int main (int argc, char*argv[]) {
 			closedir(d);
 		}
 		return(0);
-	}
- }    
+	
+ }     
