@@ -33,7 +33,7 @@ int checker(char input[], char check[]) {
 int main(int argc, char*argv[]) {
 	int dg, ddg; //deskryptor
 	int dls, dlc, dl;
-	char buf[101], host[128];
+	char buf[101], host[128], prog[128];
 	int ch;
 	float arg1, arg2;
 	char nazwa_programu[10];
@@ -67,8 +67,9 @@ int main(int argc, char*argv[]) {
 
 			fflush(stdout);
 			//pobranie od uzytk. ktory program
-			wysyla(ddg, "Nazwa programu", 100);
-
+			//wysyla(ddg, "Nazwa programu", 100);
+			odbiera(ddg, buf, 100);
+			puts(buf);
 			int i = 1;
 			
 			prog_nr = atoi(buf);

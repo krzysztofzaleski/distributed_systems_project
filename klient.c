@@ -17,14 +17,17 @@ void err_sys(const char *);
 
 int main (int argc, char*argv[]) {
     int dg; //deskryptor
-    Internet_Adres sadres;
-    char buf[101],*host;
+    Internet_Adres sadres;       //adres serwera
+    char buf[101],*host,prog,arg1,arg2;   //buf-tablica przesy³ana klinet ->serwer 
 
     // pobiera adres serwera
     if (argc<2) err_sys("brak nazwy serwera");
     host = argv[1];  //nazwa stacji
     if (host==NULL) err_sys("adres:");
+	prog = argv[2]; //nazwa programu
 
+	arg1 = argv[3]; //nazwa programu
+	arg2 = argv[4]; //nazwa programu
     // tworzy gniazdo
     if ((dg=socket (PF_INET,SOCK_STREAM,0)) < 0)
         err_sys("nie moge utworzyc gniazda");
@@ -35,8 +38,8 @@ int main (int argc, char*argv[]) {
     if (connect (dg, sadres, sadres.rozmiar()) < 0)
         err_sys("nie moge poloczyc sie z serverem");
 
-
-    odbiera(dg,buf,100);
+	strcpy(buf, prog);
+    wysyla(dg,buf,100);
     puts(buf);
     fflush(stdout);
 

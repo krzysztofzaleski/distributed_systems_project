@@ -30,7 +30,7 @@ class Internet_Adres {
     
   Internet_Adres(); 
   
-  void konfiguracja(int numer_portu,const char *host_nazwa);
+  void konfiguracja(int numer_portu,const char *host_nazwa,);
   
   operator adres_gniazda() { return (adres_gniazda)&adres; }
   
