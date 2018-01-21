@@ -39,7 +39,7 @@ int main(int argc, char*argv[]) {
 	char nazwa_programu[10];
 	char execStr1[20];
 	char execStr2[20];
-	int prog_nr;
+	char prog_nr;
 
 	Internet_Adres sadres, cadres;
 
@@ -67,22 +67,19 @@ int main(int argc, char*argv[]) {
 
 			fflush(stdout);
 			//pobranie od uzytk. ktory program
-			wysyla(ddg, "Jaki chcesz wykonac program?\nOpcje: 1. iloraz, 2. iloczyn, 3. suma, 4. roznica\nPodaj nr programu:", 100);
+			wysyla(ddg, "Nazwa programu", 100);
 
 			int i = 1;
-			for (int i = 1; i < 4; i++) {
-				if (odbiera(ddg, buf, 100) == 0) break;
-
-				
-					prog_nr = atoi(buf);
-					wysyla(ddg, "Podaj 1 liczbe\t", 100);
+			
+			prog_nr = atoi(buf);
+			wysyla(ddg, "", 100);
 				
 				
 					//wysyla(ddg, "Podaj 2 liczbe\t", 100);
 					//arg1 = atof(buf);
 				
 				
-					arg2 = atof(buf);
+					//arg2 = atof(buf);
 				
 			};
 
@@ -93,25 +90,25 @@ int main(int argc, char*argv[]) {
 			dup2(fd[1], 1);
 
 
-			if (prog_nr == 1) {
+			//if (prog_nr == 1) {
 				//                printf("proces potomny wykonuje program <ILORAZ>:\n");
-				execlp("./iloraz", execStr1, execStr2, NULL);
-			}
-			else if (prog_nr == 2) {
+				execlp("./prog_nr", execStr1, execStr2, NULL);
+			//}
+			//else if (prog_nr == 2) {
 				//                printf("proces potomny wykonuje program <ILOCZYN>:\n");
-				execlp("./iloczyn", execStr1, execStr2, NULL);
-			}
-			else if (prog_nr == 3) {
+			//	execlp("./iloczyn", execStr1, execStr2, NULL);
+			//}
+			//else if (prog_nr == 3) {
 				//                printf("proces potomny wykonuje program <SUMA>:\n");
-				execlp("./suma", execStr1, execStr2, NULL);
-			}
-			else if (prog_nr == 4) {
+			//	execlp("./suma", execStr1, execStr2, NULL);
+			//}
+			//else if (prog_nr == 4) {
 				//                printf("proces potomny wykonuje program <ROZNICA>:\n");
-				execlp("./roznica", execStr1, execStr2, NULL);
-			}
-			else {
-				wysyla(ddg, "Podales zle argumenty! Konczymy wspolprace...", 100);
-			}
+			//	execlp("./roznica", execStr1, execStr2, NULL);
+		//	}
+			//else {
+			//	wysyla(ddg, "Podales zle argumenty! Konczymy wspolprace...", 100);
+			//}
 
 			printf("Koniec procesu potomnego\n");
 			close(ddg);
